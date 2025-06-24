@@ -77,15 +77,15 @@ local function create_github_repo()
 	local cwd = vim.fn.getcwd()
 	local default_name = vim.fn.fnamemodify(cwd, ":t")
 
-	vim.ui.input({ prompt = "Nombre del repositorio: ", default = default_name }, function(repo_name)
+	vim.ui.input({ prompt = "Repository name: ", default = default_name }, function(repo_name)
 		if not repo_name or repo_name == "" then
-			vim.notify("Nombre inválido", vim.log.levels.WARN)
+			vim.notify("Invalid name", vim.log.levels.WARN)
 			return
 		end
 
-		vim.ui.select({ "public", "private" }, { prompt = "Visibilidad del repositorio:" }, function(visibility)
+		vim.ui.select({ "public", "private" }, { prompt = "Repository visibility:" }, function(visibility)
 			if not visibility then
-				vim.notify("Creación cancelada", vim.log.levels.INFO)
+				vim.notify("Operation canceled", vim.log.levels.INFO)
 				return
 			end
 
@@ -95,9 +95,9 @@ local function create_github_repo()
 				"create",
 				repo_name,
 				"--" .. visibility,
-				"--source=.", -- usa el directorio actual
-				"--remote=origin", -- añade como remote origin
-				"--push", -- sube el código al crear
+				"--source=.",
+				"--remote=origin",
+				"--push",
 			}
 
 			vim.fn.jobstart(cmd, {
@@ -119,3 +119,38 @@ local function create_github_repo()
 end
 
 vim.keymap.set("n", "<leader>gI", create_github_repo, { desc = "Create github repo" })
+-- git push
+local function git_push()
+	local branch = vim.fn.system("git rev-parse --abbrev-ref HEAD"):gsub("\n", "")
+	if vim.v.shell_error ~= 0 or branch == "" then
+		vim.notify("No se pudo obtener la rama actual", vim.log.levels.ERROR, { title = "Git Push" })
+		return
+	end
+
+	local output = vim.fn.system({ "git", "push", "origin", branch })
+	if vim.v.shell_error == 0 then
+		vim.notify(output, vim.log.levels.INFO, { title = "Push Successful" })
+	else
+		vim.notify(output, vim.log.levels.ERROR, { title = "Error in git push" })
+	end
+end
+
+vim.keymap.set("n", "<leader>gp", git_push, { desc = "Git push current branch" })
+
+-- git pull
+local function git_pull()
+	local branch = vim.fn.system("git rev-parse --abbrev-ref HEAD"):gsub("\n", "")
+	if vim.v.shell_error ~= 0 or branch == "" then
+		vim.notify("No se pudo obtener la rama actual", vim.log.levels.ERROR, { title = "Git Pull" })
+		return
+	end
+
+	local output = vim.fn.system({ "git", "pull", "origin", branch })
+	if vim.v.shell_error == 0 then
+		vim.notify(output, vim.log.levels.INFO, { title = "Pull Successful" })
+	else
+		vim.notify(output, vim.log.levels.ERROR, { title = "Error in git pull" })
+	end
+end
+
+vim.keymap.set("n", "<leader>gP", git_pull, { desc = "Git pull current branch" })
