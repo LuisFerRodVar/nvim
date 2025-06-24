@@ -7,7 +7,12 @@ return {
 		bigfile = { enabled = true },
 		notifier = { enabled = true },
 		dashboard = { enabled = true },
-		indent = { enabled = true },
+		indent = {
+			enabled = true,
+			animate = {
+				enabled = false,
+			},
+		},
 		quickfile = { enabled = true },
 		bufdelete = { enabled = true },
 		explorer = {
@@ -15,6 +20,9 @@ return {
 			replace_netrw = true,
 		},
 		git = { enabled = true },
+		statuscolumn = {
+			enabled = true,
+		},
 		input = { enabled = true },
 		lazygit = { enabled = true },
 		zen = { enabled = true },

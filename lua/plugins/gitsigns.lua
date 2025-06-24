@@ -1,9 +1,3 @@
 return {
-	{
-		"tpope/vim-fugitive",
-	},
-	{
-		-- GitHub integration for vim-fugitive
-		"tpope/vim-rhubarb",
-	},
+	"lewis6991/gitsigns.nvim",
 }

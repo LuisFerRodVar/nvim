@@ -61,7 +61,7 @@ return {
 							local winnr = vim.fn.tabpagewinnr(context.tabnr)
 							local bufnr = buflist[winnr]
 							local mod = vim.fn.getbufvar(bufnr, "&mod")
-							return name .. (mod == 1 and " +" or "")
+							return name .. (mod == 1 and " ●" or "")
 						end,
 					},
 				},

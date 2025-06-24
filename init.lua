@@ -23,6 +23,14 @@ require("lazy").setup({
 	require("plugins.treesitter"),
 	require("plugins.conform"),
 	require("plugins.gitsigns"),
+	require("plugins.llm"),
 })
 -- lsp config
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("ts_ls")
+vim.lsp.enable("angularls")
+vim.lsp.enable("cssls")
+vim.lsp.enable("html")
+vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("pylsp")
+vim.lsp.enable("bashls")
