@@ -29,7 +29,16 @@ return {
 		picker = {
 			enabled = true,
 			sources = {
-				explorer = {},
+				explorer = {
+					hidden = false,
+					ignored = false,
+					exclude = { "node_modules/**", ".git/**", "dist/**" },
+				},
+				files = {
+					hidden = false,
+					ignored = false,
+					exclude = { "node_modules/**", ".git/**", "dist/**" },
+				},
 			},
 		},
 		image = { enabled = true },
