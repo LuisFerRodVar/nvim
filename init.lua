@@ -23,7 +23,9 @@ require("lazy").setup({
 	require("plugins.treesitter"),
 	require("plugins.conform"),
 	require("plugins.gitsigns"),
-	require("plugins.llm"),
+	require("plugins.tmux"),
+	require("plugins.autopairs"),
+	require("plugins.comment"),
 })
 -- lsp config
 vim.lsp.enable("lua_ls")
