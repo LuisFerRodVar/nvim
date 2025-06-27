@@ -25,7 +25,6 @@ return {
 		},
 		input = { enabled = true },
 		lazygit = { enabled = true },
-		zen = { enabled = true },
 		picker = {
 			enabled = true,
 			sources = {
@@ -380,14 +379,6 @@ return {
 				Snacks.lazygit.open(opts)
 			end,
 			desc = "Open lazy git",
-		},
-		-- Zen
-		{
-			"<leader>z",
-			function()
-				Snacks.zen.zen(opts)
-			end,
-			desc = "Toggle zen mode",
 		},
 	},
 }

@@ -26,6 +26,7 @@ require("lazy").setup({
 	require("plugins.tmux"),
 	require("plugins.autopairs"),
 	require("plugins.comment"),
+	require("plugins.zk"),
 })
 -- lsp config
 vim.lsp.enable("lua_ls")
