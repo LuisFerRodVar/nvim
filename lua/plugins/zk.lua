@@ -15,8 +15,20 @@ return {
 				},
 			},
 		})
+
+		vim.keymap.set(
+			"n",
+			"<leader>zn",
+			"<cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>",
+			{ desc = "Create new note" }
+		)
+		vim.keymap.set("n", "<leader>zo", "<cmd>ZkNotes<CR>", { desc = "Search notes" })
+		vim.keymap.set("n", "<leader>zt", "<cmd>ZkTags<CR>", { desc = "View tags" })
+		vim.keymap.set("n", "<leader>zl", "<cmd>ZkLinks<CR>", { desc = "View links" })
+		vim.keymap.set("v", "<leader>zf", ":'<,'>ZkMatch<CR>", { desc = "Search by selected text" })
 	end,
-	-- Check if the current directory is zk
+
+	-- Lazy loading si hay un `.zk` en el directorio
 	init = function()
 		local function check_and_load_zk()
 			local cwd = vim.fn.getcwd()
