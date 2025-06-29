@@ -27,6 +27,7 @@ require("lazy").setup({
 	require("plugins.autopairs"),
 	require("plugins.comment"),
 	require("plugins.zk"),
+	require("plugins.supermaven"),
 })
 -- lsp config
 vim.lsp.enable("lua_ls")
