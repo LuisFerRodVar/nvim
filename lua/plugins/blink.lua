@@ -35,11 +35,25 @@ return {
 			nerd_font_variant = "normal",
 		},
 
-		completion = { documentation = { auto_show = true } },
+		completion = {
+			documentation = { auto_show = true },
+			menu = {
+				draw = {
+					components = {
+						kind_icon = {
+							text = function(ctx)
+								return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
+							end,
+						},
+					},
+				},
+			},
+		},
 
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
 		},
+		signature = { enabled = true },
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
 	opts_extend = { "sources.default" },
