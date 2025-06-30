@@ -49,7 +49,7 @@ return {
 						path = 0,
 						use_mode_colors = true,
 						tabs_color = {
-							active = "lualine_a_normal",
+							active = "lualine_a_insert",
 							inactive = "lualine_c_normal",
 						},
 						show_modified_status = false,

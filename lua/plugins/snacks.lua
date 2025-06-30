@@ -41,6 +41,7 @@ return {
 			},
 		},
 		image = { enabled = true },
+		toggle = { enabled = true },
 	},
 	keys = {
 		-- Picker
