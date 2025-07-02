@@ -14,7 +14,7 @@ return {
 				api.stop()
 			end
 		end)
-		vim.keymap.set("n", "<leader>a", function()
+		vim.keymap.set("n", "<leader>as", function()
 			if api.is_running() then
 				api.stop()
 				vim.notify("AI disabled", vim.log.levels.INFO)

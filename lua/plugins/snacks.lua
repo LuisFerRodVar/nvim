@@ -42,6 +42,7 @@ return {
 		},
 		image = { enabled = true },
 		toggle = { enabled = true },
+		scratch = { enabled = true },
 	},
 	keys = {
 		-- Picker

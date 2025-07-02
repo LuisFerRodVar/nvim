@@ -3,29 +3,6 @@ return {
 	event = "VeryLazy",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		local lsp = function()
-			local bufnr = vim.api.nvim_get_current_buf()
-			local clients = vim.lsp.get_clients()
-
-			local status_list = {}
-
-			for _, client in ipairs(clients) do
-				local attached = client.attached_buffers and client.attached_buffers[bufnr]
-				local initialized = client.initialized
-
-				if attached and initialized then
-					table.insert(status_list, client.name .. " ✓")
-				elseif attached then
-					table.insert(status_list, client.name .. " …")
-				end
-			end
-
-			if #status_list == 0 then
-				return ""
-			end
-
-			return table.concat(status_list, " | ")
-		end
 		require("lualine").setup({
 			options = {
 				theme = "nord",
@@ -66,7 +43,7 @@ return {
 					},
 				},
 				lualine_x = { "diff", "diagnostics", "filetype" },
-				lualine_y = { lsp },
+				lualine_y = { "lsp_status" },
 				lualine_z = { "progress" },
 			},
 			inactive_sections = {
