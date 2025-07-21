@@ -25,10 +25,7 @@ return {
 						mode = 1,
 						path = 0,
 						use_mode_colors = true,
-						tabs_color = {
-							active = "lualine_a_insert",
-							inactive = "lualine_c_normal",
-						},
+						tabs_color = {},
 						show_modified_status = false,
 						symbols = {
 							modified = "",

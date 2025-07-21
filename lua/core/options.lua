@@ -38,7 +38,7 @@ vim.o.expandtab = true
 vim.o.scrolloff = 4
 
 -- Highlight the current line
-vim.o.cursorline = true
+vim.o.cursorline = false
 
 -- Open new splits below the current window
 vim.o.splitbelow = true

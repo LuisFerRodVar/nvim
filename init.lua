@@ -38,6 +38,7 @@ require("lazy").setup({
 	require("plugins.copilot"), -- AI-assisted coding plugin
 	require("plugins.avante"), -- Avante plugin
 })
+vim.cmd([[colorscheme nord]]) -- Set the color scheme to Nord
 
 -- LSP configuration
 -- Enable language servers for various programming languages
