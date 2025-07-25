@@ -10,35 +10,66 @@ A modern, organized Neovim configuration using Lua with lazy.nvim plugin managem
 ├── lua/
 │   ├── core/                   # Core Neovim settings
 │   │   ├── options.lua         # Vim options and settings
-│   │   └── keymaps.lua         # Key mappings
+│   │   ├── keymaps.lua         # Key mappings
+│   │   └── validate.lua        # Configuration validation
 │   ├── config/                 # Additional configurations
 │   │   └── git.lua             # Git-specific settings
 │   ├── lsp/                    # Language Server Protocol configs
-│   │   ├── init.lua            # LSP manager
+│   │   ├── init.lua            # LSP initialization
+│   │   ├── angularls.lua       # Angular language server
+│   │   ├── bashls.lua          # Bash language server
+│   │   ├── cssls.lua           # CSS language server
+│   │   ├── html.lua            # HTML language server
 │   │   ├── lua_ls.lua          # Lua language server
-│   │   ├── ts_ls.lua           # TypeScript language server
-│   │   └── ...                 # Other language servers
+│   │   ├── markdown_oxide.lua  # Markdown language server
+│   │   ├── marksman.lua        # Markdown (Marksman) server
+│   │   ├── pylsp.lua           # Python language server
+│   │   ├── rust_analyzer.lua   # Rust language server
+│   │   └── ts_ls.lua           # TypeScript language server
 │   └── plugins/                # Plugin configurations
 │       ├── ui/                 # UI & appearance plugins
+│       │   ├── colortheme.lua  # Color scheme configuration
+│       │   ├── lualine.lua     # Status line
+│       │   ├── noice.lua       # Enhanced UI notifications
+│       │   ├── snacks.lua      # Snacks.nvim utilities
+│       │   ├── snacks-keymaps.lua # Snacks keymappings
+│       │   └── which-key.lua   # Key mapping help
 │       ├── editor/             # Editor enhancement plugins
+│       │   ├── autopairs.lua   # Auto-pair brackets/quotes
+│       │   ├── blink.lua       # Completion engine
+│       │   ├── comment.lua     # Smart commenting
+│       │   ├── treesitter.lua  # Syntax highlighting
+│       │   └── trouble.lua     # Diagnostics panel
 │       ├── lsp/                # LSP & development tools
+│       │   ├── conform.lua     # Code formatting
+│       │   └── mason.lua       # LSP server manager
 │       ├── git/                # Git integration plugins
+│       │   └── gitsigns.lua    # Git signs and hunks
 │       ├── integration/        # External tool integrations
+│       │   ├── tmux.lua        # Tmux integration
+│       │   └── zk.lua          # Zettelkasten notes
 │       └── ai/                 # AI assistance plugins
+│           ├── avante.lua      # AI coding assistant
+│           ├── copilot.lua     # GitHub Copilot
+│           ├── gemini.lua      # Google Gemini AI
+│           └── supermaven.lua  # Supermaven AI
 ├── AGENTS.md                   # Guidelines for AI coding agents
-└── lazy-lock.json              # Plugin version lockfile
+├── lazy-lock.json              # Plugin version lockfile
+└── readme.md                   # This file
 ```
 
 ## 🚀 Features
 
-- **Modern Plugin Management**: Using lazy.nvim for fast startup times
-- **Organized Structure**: Plugins categorized by functionality
-- **LSP Integration**: Full language server support for multiple languages
-- **Git Integration**: Built-in Git workflow tools
-- **AI Assistance**: Multiple AI coding assistants (Copilot, Avante, etc.)
-- **File Explorer**: Snacks.nvim integrated file browser
-- **Fuzzy Finding**: Advanced file and content searching
-- **Beautiful UI**: Nord colorscheme with custom statusline
+- **Modern Plugin Management**: Using lazy.nvim for fast startup times and efficient loading
+- **Organized Structure**: Plugins categorized by functionality with clear separation
+- **Comprehensive LSP Support**: Language servers for 10+ languages including TypeScript, Python, Rust, HTML, CSS, and more
+- **Advanced Completion**: Blink.nvim for fast and intelligent code completion
+- **Git Integration**: GitSigns for inline git information and status
+- **Multiple AI Assistants**: GitHub Copilot, Avante, Supermaven, and Google Gemini integration
+- **Enhanced UI**: Snacks.nvim for file management, Noice for notifications, Which-Key for keybinding help
+- **Smart Editing**: TreeSitter syntax highlighting, auto-pairs, smart commenting, and Trouble diagnostics
+- **External Integration**: Tmux navigation and Zettelkasten note-taking support
+- **Code Formatting**: Conform.nvim for consistent code formatting across languages
 
 ## 📋 Requirements
 
@@ -56,25 +87,21 @@ A modern, organized Neovim configuration using Lua with lazy.nvim plugin managem
 
 ## ⌨️ Key Mappings
 
-### File Operations
-- `<leader>ff` - Find files
-- `<leader>fg` - Find git files
-- `<leader>f/` - Grep in files
-- `<leader>ee` - File explorer
+### Core Mappings
+- `<Space>` - Leader key
+- `<leader>v` - Split window vertically
+- `<leader>s` - Split window horizontally
+- `<leader>rn` - Toggle relative line numbers
+- `<leader>n` - Toggle line numbers
 
-### Git
-- `<leader>gg` - LazyGit
-- `<leader>gs` - Git status
-- `<leader>gb` - Git branches
+### Tab Management
+- `<leader>to` - Create a new tab
+- `<leader>tx` - Close current tab
 
-### LSP
-- `gd` - Go to definition
-- `gr` - Find references
-- `<leader>ls` - Document symbols
+### LSP Management
+- `<leader>qL` - Detach LSP from current buffer
 
-### Buffers
-- `<leader>x` - Close current buffer
-- `<leader>X` - Close all other buffers
+*Note: Additional keymappings are defined within individual plugins. Use `<leader>` + Which-Key to explore available shortcuts.*
 
 ## 🔧 Customization
 
