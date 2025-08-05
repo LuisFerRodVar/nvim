@@ -44,15 +44,6 @@ vim.cmd([[colorscheme nord]])
 -- LSP Configuration
 -- ============================================================================
 
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("angularls")
-vim.lsp.enable("ts_ls")
-vim.lsp.enable("markdown_oxide")
-vim.lsp.enable("pylsp")
-vim.lsp.enable("rust_analyzer")
-vim.lsp.enable("html")
-vim.lsp.enable("cssls")
-
 -- ============================================================================
 -- Custom Autocommands & Commands
 -- ============================================================================
@@ -70,7 +61,11 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Custom command to show diagnostics
 vim.api.nvim_create_user_command("ShowDiagnostics", function()
 	local diagnostics = vim.diagnostic.get(0)
+	local all = ""
 	for _, diag in ipairs(diagnostics) do
-		print(string.format("Line %d, Col %d: %s", diag.lnum + 1, diag.col + 1, diag.message))
+		local msg = string.format("Line %d, Col %d: %s\n", diag.lnum + 1, diag.col + 1, diag.message)
+		all = all .. msg
+		print(msg:sub(1, -2))
 	end
+	vim.system({ "wl-copy" }, { stdin = all })
 end, {})

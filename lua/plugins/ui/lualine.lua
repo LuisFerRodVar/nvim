@@ -40,7 +40,7 @@ return {
 					},
 				},
 				lualine_x = { "diff", "diagnostics", "filetype" },
-				lualine_y = { "lsp_status" },
+				lualine_y = { "encoding" },
 				lualine_z = { "progress" },
 			},
 			inactive_sections = {
