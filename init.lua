@@ -58,6 +58,14 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+-- Habilita autoread globalmente
+vim.o.autoread = true
+
+-- Check for external changes (oriented to use with opencode)
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+	command = "checktime",
+})
+
 -- Custom command to show diagnostics
 vim.api.nvim_create_user_command("ShowDiagnostics", function()
 	local diagnostics = vim.diagnostic.get(0)

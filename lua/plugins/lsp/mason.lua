@@ -1,35 +1,26 @@
 return {
 	{
-		"mason-org/mason.nvim",
-		opts = {
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗",
+		"williamboman/mason.nvim",
+		config = true,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = { "williamboman/mason.nvim" },
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"lua_ls",
+					"ts_ls",
+					"rust_analyzer",
+					"pyright",
 				},
-			},
-		},
+				automatic_installation = true,
+			})
+		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-		},
-		config = function()
-			local lspconfig = require("lspconfig")
-
-			local servers = {
-				lua_ls = {},
-				ts_ls = {},
-				rust_analyzer = {},
-				pyright = {},
-			}
-
-			for server, config in pairs(servers) do
-				lspconfig[server].setup(config)
-			end
-		end,
+		dependencies = { "williamboman/mason-lspconfig.nvim" },
+		config = function() end,
 	},
 }
